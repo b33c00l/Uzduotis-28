@@ -42,6 +42,8 @@ session_start();
       var total = [];
       var game = [];
 
+      //populating table
+
       $.getJSON("game.php?my", function(data){
         var tr;
         for (var i = 0; i < data.length; i++) {
@@ -55,6 +57,8 @@ session_start();
           
         }
       });
+
+      //getting info from JSON
       
       $(document).ready(function(){
         $.getJSON("game.php?my", function(result){
@@ -66,6 +70,7 @@ session_start();
         });  
         });      
 
+      //populating chart
       var ctx = document.getElementById("myChart").getContext('2d');
       var myChart = new Chart(ctx, {
         type: 'line',

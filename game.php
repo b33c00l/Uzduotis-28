@@ -42,7 +42,7 @@ try {
 	echo "Connection failed: " . $e->getMessage();
 }
 
-//getting 
+//getting logged in user date
 if (isset($_GET['my'])) {
 	
 	$statement = $conn->prepare("SELECT * FROM stats WHERE username = :username");
@@ -50,6 +50,7 @@ if (isset($_GET['my'])) {
 	$statement->execute();
 	$response = $statement->fetchAll(PDO::FETCH_ASSOC);
 
+//getting top 5 data
 } elseif (isset($_GET['top'])) {
 	$statement = $conn->query("SELECT * FROM stats ORDER BY total DESC LIMIT 5");
 	$response = $statement->fetchAll(PDO::FETCH_ASSOC);
