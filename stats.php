@@ -27,7 +27,6 @@ session_start();
             <tr>
               <th>ID</th>
               <th>Username</th>
-              <th>Game</th>
               <th>Total</th>
             </tr>
           </thead>
@@ -45,30 +44,22 @@ session_start();
       //populating table
 
       $.getJSON("game.php?my", function(data){
+         $.each(data, function(i, field){
+            total.push(field.total);
+            game.push(field.id);
+          });
         var tr;
         for (var i = 0; i < data.length; i++) {
           tr = $('#1');
           tr.append("<tr>");
           tr.append("<td>" + data[i]['id'] + "</td>");
           tr.append("<td>" + data[i]['username'] + "</td>");
-          tr.append("<td>" + data[i]['game'] + "</td>");
           tr.append("<td>" + data[i]['total'] + "</td>");
-          tr.append("</tr>");
-          
+          tr.append("</tr>"); 
         }
-      });
-
-      //getting info from JSON
-      
-      $(document).ready(function(){
-        $.getJSON("game.php?my", function(result){
-          $.each(result, function(i, field){
-            total.push(field.total);
-            game.push(field.game);
-          });
           myChart.update();
         });  
-        });      
+          
 
       //populating chart
       var ctx = document.getElementById("myChart").getContext('2d');

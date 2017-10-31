@@ -1,7 +1,6 @@
 var rolls = 0;
 var game_array = [];
 var total = 0;
-var game = 0;
 
 
 //new game button
@@ -34,9 +33,8 @@ function play(){
 		game_array.toString();
 		document.getElementById('test').innerHTML = game_array;
 	} else {
-		document.getElementById('test').innerHTML = "Game Over!"
+		document.getElementById('test').innerHTML = "Game Over!";
 		document.getElementById('play').disabled = true;
-		game++
 		var total=0;
 		for(var i in total_win) { total += total_win[i]; }
 			document.getElementById('won').innerHTML = total;
@@ -46,7 +44,6 @@ function play(){
 		$.post("game.php",
 			{
 				win: total,
-				game: game,
 			},
 		function(data){
 			console.log("OK");
